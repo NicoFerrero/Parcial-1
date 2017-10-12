@@ -1,0 +1,31 @@
+# depslib dependency file v1.0
+1507298457 source:d:\ferrero.nicolas\lib.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<ctype.h>
+	"lib.h"
+
+1507298298 d:\ferrero.nicolas\lib.h
+
+1507298690 source:d:\ferrero.nicolas\main.c
+	<stdio.h>
+	<stdlib.h>
+	"lib.h"
+
+1507771560 source:c:\users\nico\desktop\ferrero.nicolas\lib.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<ctype.h>
+	"lib.h"
+
+1507768676 c:\users\nico\desktop\ferrero.nicolas\lib.h
+
+1507771575 source:c:\users\nico\desktop\ferrero.nicolas\main.c
+	<stdio.h>
+	<stdlib.h>
+	"lib.h"
+
