@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "lib.h"
 
-#define USUARIOS 7 // si pongo mas de 7 muestra È en el item 9
+#define USUARIOS 7
 #define PRODUCTOS 7
 
 

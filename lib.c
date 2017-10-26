@@ -34,9 +34,15 @@ int getInt(int* input,char mensaje[],char eMensaje[],int lowLimit,int hiLimit)
 int getFloat(float* input,char mensaje[],char eMensaje[],float lowLimit,float hiLimit)
 {
     float aux;
+    char auxChar[256];
 
-    printf("%s", mensaje);
-    scanf("%f", &aux);
+    getString(mensaje,auxChar);
+    if(esNumerico(auxChar) == -1)
+    {
+        printf("Este campo solo admite numeros enteros\n");
+        return -1;
+    }
+    aux = atof(auxChar);
     if(aux < lowLimit || aux > hiLimit)
     {
         printf("%s", eMensaje);
@@ -121,7 +127,7 @@ int esNumerico(char string[])
     int i = 0;
     while(string[i] != '\0')
     {
-        if(string[i] < '0' || string[i] > '9')
+        if((string[i] != '.') && (string[i] < '0' || string[i] > '9'))
         {
             return -1;
         }
@@ -163,7 +169,6 @@ int menu(char listado[])
         system("pause");
         return 0;
     }
-
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

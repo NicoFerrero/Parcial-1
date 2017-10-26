@@ -4,7 +4,7 @@
 typedef struct
 {
     char nombreUsuario[51];
-    char passUsuario[30];
+    char passUsuario[31];
     int estadoUsuario;
     int idUsuario;
     float puntaje;

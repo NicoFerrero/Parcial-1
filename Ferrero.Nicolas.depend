@@ -29,3 +29,18 @@
 	<stdlib.h>
 	"lib.h"
 
+1508615467 source:c:\users\nico\desktop\programación\ferrero.nicolas\lib.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	<ctype.h>
+	"lib.h"
+
+1508785649 c:\users\nico\desktop\programación\ferrero.nicolas\lib.h
+
+1508615491 source:c:\users\nico\desktop\programación\ferrero.nicolas\main.c
+	<stdio.h>
+	<stdlib.h>
+	"lib.h"
+
