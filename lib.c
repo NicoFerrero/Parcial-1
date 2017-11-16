@@ -604,13 +604,39 @@ int ComprarProducto(eUsuario usuarios[], int tamU, eProducto productos[],int tam
 {
         char Aux[50];
         char Aux1[50];
+        char Aux2[50];
+        char aux3[50];
+        int flag = 0;
         int i;
         int j;
         int IDP;
         char respuesta;
         int cantidad;
-        char Aux2[50];
-        int nota;
+        float nota;
+
+        printf("\t\tPRODUCTOS\n");
+        printf("ID--NOMBRE PRODUCTO--PRECIO--CANTIDAD VENDIDA--STOCK--NOMBRE USUARIO\n");
+        for(i=0;i<tamP;i++)
+        {
+            if(productos[i].estadoProducto == 1)
+            {
+                for(j=0;j<tamU;j++ )
+                {
+                    if(productos[i].idUsuario == usuarios[j].idUsuario)
+                    {
+                        strcpy(aux3,usuarios[j].nombreUsuario);
+                    }
+                }
+                printf("%d--%s--%.2f--%d--%d--%s\n",productos[i].idProducto,productos[i].nombreProducto,productos[i].precio,productos[i].vendidos,productos[i].stock,aux3);
+                flag = 1;
+            }
+        }
+        if(flag == 0)
+        {
+            system("cls");
+            printf("No hay publicaciones activas\n");
+            return -1;
+        }
 
         printf("Ingrese el ID del producto que desea comprar: ");
         fflush(stdin);
@@ -642,9 +668,14 @@ int ComprarProducto(eUsuario usuarios[], int tamU, eProducto productos[],int tam
                         return -1;
                     }
                     cantidad = atoi(Aux1);
-                    if(productos[i].stock < cantidad || cantidad < 1)
+                    if(cantidad < 1)
                     {
-                        printf("No puede realizar la compra porque la cantidad que desea comprar supera el stock de este producto o ingreso una cantidad menor a una unidad\n");
+                        printf("ingreso una cantidad menor a una unidad\n");
+                        return -1;
+                    }
+                    if(productos[i].stock < cantidad)
+                    {
+                        printf("No puede realizar la compra porque la cantidad que desea comprar supera el stock de este producto\n");
                         return -1;
                     }
                     getSN(&respuesta,"\nEsta seguro que desea comprar este producto? s/n","\nError. Opcion no valida");
@@ -652,15 +683,15 @@ int ComprarProducto(eUsuario usuarios[], int tamU, eProducto productos[],int tam
                     {
                             productos[i].stock = productos[i].stock - cantidad;
                             productos[i].vendidos = productos[i].vendidos + cantidad;
-                            printf("\nIngrese una nota entera entre 1-10 para el comprador: ");
+                            printf("\nIngrese una nota entre 1-10 para el comprador: ");
                             fflush(stdin);
                             gets(Aux2);
                             if(esNumerico(Aux2) == -1)
                             {
-                                 printf("\nEste campo solo admite numeros enteros\n");
+                                 printf("\nEste campo solo admite numeros\n");
                                  return -1;
                             }
-                            nota = atoi(Aux2);
+                            nota = atof(Aux2);
                             for(j=0;j<tamU;j++)
                             {
                                 if(usuarios[j].idUsuario == productos[i].idUsuario)
@@ -755,7 +786,7 @@ void ListarUsuarios(eUsuario usuarios[], int tamU)
     printf("NOMBRE DE USUARIO--PUNTAJE PROMEDIO\n");
     for(i=0;i<tamU;i++)
     {
-        if(usuarios[i].estadoUsuario == 1)
+        if(usuarios[i].estadoUsuario == 1 && usuarios[i].ventas > 0)
         {
             usuarios[i].puntaje = usuarios[i].nota / usuarios[i].ventas;
             printf("%s--%.2f\n",usuarios[i].nombreUsuario,usuarios[i].puntaje);
